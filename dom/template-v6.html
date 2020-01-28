@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <!-- fazendo o vue usar um html  -->
+    <div v-html="linkHtml"></div>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        titulo: 'Usando Vue JS!',
+        linkHtml: '<a href="http://google.com.br">Google</a>'
+      },
+      methods: {
+        acessaTitulo() {
+          const novoTitulo = this.titulo = 'Novo titulo criado em: ' + new Date()
+          return novoTitulo
+        }
+      }
+    })
+  </script>
+</body>
+</html>

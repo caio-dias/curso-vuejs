@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <!-- o v-once faz executar a interpolação só uma vez, ele para de olhar aquele elemento -->
+    <h1 v-once>{{ titulo }}</h1>
+    <h1>{{ acessaTitulo() }}</h1>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        titulo: 'Usando Vue JS!',
+        link: 'http://google.com.br'
+      },
+      methods: {
+        acessaTitulo() {
+          const novoTitulo = this.titulo = 'Novo titulo criado em: ' + new Date()
+          return novoTitulo
+        }
+      }
+    })
+  </script>
+</body>
+</html>

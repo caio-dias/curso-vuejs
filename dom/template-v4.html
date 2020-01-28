@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <h1>{{ titulo }}</h1>
+    
+    <!-- chamando um metodo em vue -->
+    <h2>{{ acessaTitulo() }}</h2>
+
+    <!-- com atributos, usa-se o v-bind:nomedoattr , tambem pode se usar somente o :nomedoattr-->
+    <a v-bind:href="link" :data-exemplo="titulo">Acessar link feito pelo vue bind</a>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        titulo: 'Usando Vue JS!',
+        link: 'http://google.com.br'
+      },
+      methods: {
+        acessaTitulo() {
+          //acessando o titulo que esta em data
+          //o que esta em data e o que esta em metodos, precisam ter o nome diferente
+          return this.titulo
+        }
+      }
+    })
+  </script>
+</body>
+</html>

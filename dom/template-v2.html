@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <h1>{{ titulo }}</h1>
+    <!-- chamando um metodo em vue passando parametros -->
+    <h2>{{saudacao('Caio')}}</h2>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        titulo: 'Usando Vue JS!'
+      },
+      methods: {
+        saudacao(nome) {
+          return 'Boa semana ' + nome
+        }
+      }
+    })
+  </script>
+</body>
+</html>

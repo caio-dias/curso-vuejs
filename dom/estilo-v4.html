@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<style>
+  .caixas {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .demo {
+    width: 100px;
+    height: 100px;
+    background: gray;
+  }
+
+  .c1 {
+    background-color: red;
+  }
+
+  .c2 {
+    background-color: green;
+  }
+
+  .c3 {
+    background-color: black;
+  }
+
+  .borda {
+    border: 2px solid blue;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <div class="caixas">
+      <!-- usando style inline -->
+      <div class="demo" :style="{'background-color': cor}"></div>
+      <!-- style inline com dado computado + inline em array -->
+      <div class="demo" :style="[meuEstilo, {'border-radius': '100px'}]"></div>
+      <div class="demo"></div>
+    </div>
+    <input type="text" v-model="cor">
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        cor : 'red'
+      },
+      computed: {
+        meuEstilo() {
+          return {
+            'background-color': this.cor,
+            'border': '3px solid purple'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

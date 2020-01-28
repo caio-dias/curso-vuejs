@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <p>{{ contador }}</p>
+    <!-- v-on fica escutando o evento que esta sinalizado, e vai chamar a funcao quando houver o evento -->
+    <!-- funcao passando parametros, quando queremos especificar que o evento sera passado, usa-se a palavra reservada $event -->
+    <button v-on:click="somar(5, $event)">Somar</button>
+    <button v-on:click="subtrair(3)">Subtrair</button>
+    <p v-on:mousemove="atualizarXY">
+      Mouse: {{ x }} e {{ y }}
+      <!-- parando a propagacao do evento mousemove nesse elemento -->
+      <span v-on:mousemove.stop="">PARAR AQUI!!!</span>
+    </p>
+    <!-- prevenindo o comportamento default de um elemento -->
+    <a v-on:click.prevent="" href="http://google.com">Google</a><br>
+    <!-- evento de keyup . a letra que quer chamar a funcao-->
+    <input type="text" v-on:keyup.a.enter.x="exibirAlerta">
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        contador: 0,
+        x: 0,
+        y: 0
+      },
+      methods: { 
+        somar(passo, event) {
+          console.log(event)
+          this.contador+=passo
+        },
+        subtrair(passo) {
+          this.contador-=passo
+        },
+        atualizarXY(event) {
+          //pegando dados do evento que todo evento passa, so basta receber eles por parametro
+          this.x = event.clientX
+          this.y = event.clientY
+        },
+        exibirAlerta() {
+          alert('OLHA O ALERTA!!')
+        }
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <p>{{ contador }}</p>
+    <!-- v-on fica escutando o evento que esta sinalizado, e vai chamar a funcao quando houver o evento -->
+    <button v-on:click="somar">+ 1</button>
+    <button v-on:click="subtrair">- 1</button>
+    <p v-on:mousemove="atualizarXY">Mouse: {{ x }} e {{ y }}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        contador: 0,
+        x: 0,
+        y: 0
+      },
+      methods: {
+        somar() {
+          this.contador++
+        },
+        subtrair() {
+          this.contador--
+        },
+        atualizarXY(event) {
+          //pegando dados do evento que todo evento passa, so basta receber eles por parametro
+          this.x = event.clientX
+          this.y = event.clientY
+        }
+      }
+    })
+  </script>
+</body>
+</html>

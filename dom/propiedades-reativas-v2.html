@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <button v-on:click="aumentar">Aumentar</button>
+    <button v-on:click="diminuir">Diminuir</button>
+    <p>contador: {{ contador }}</p>
+    <!--
+      usando um dado computado para mostrar o resultado,
+      o dado computado é cacheado pelo vue, ele serve para que o vue entenda que aquele dado 
+      só deve ser alterado quando é realmente necessario, quando ele sofre uma modificacao
+    -->
+    <p>resultado: {{ resultado }}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        contador: 0
+      },
+      computed: {
+        resultado() {
+          return this.contador >= 5 ? '>= 5' : '< 5'
+        }
+      },
+      methods: {
+        aumentar() {
+          this.contador++
+        },
+        diminuir() {
+          this.contador--
+        }
+      }
+    })
+  </script>
+</body>
+</html>

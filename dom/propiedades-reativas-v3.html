@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <button v-on:click="aumentar">Aumentar</button>
+    <button v-on:click="diminuir">Diminuir</button>
+    <p>contador: {{ contador }}</p>
+    <p>resultado: {{ resultado }}</p>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        contador: 0
+      },
+      computed: {
+        resultado() {
+          return this.contador >= 5 ? '>= 5' : '< 5'
+        }
+      },
+      watch: {
+        //propriedade a ser monitorada pelo watch, os parametros são o valor novo e o valor antigo
+        contador(novo, antigo) {
+          setTimeout(() => {
+            //quando o contador sofrer alguma alteracao a funcao é chamada
+            this.contador = 0
+          }, 2000)
+        }
+      },
+      methods: {
+        aumentar() {
+          this.contador++
+        },
+        diminuir() {
+          this.contador--
+        }
+      }
+    })
+  </script>
+</body>
+</html>
