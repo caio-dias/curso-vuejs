@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+  <div id="app">
+    <!-- condicionais -->
+    <!-- a tag template serve bem para as condicionais, quando um bloco de codigo precisa entrar, e voce nao quer usar um elemento html para por o v-if -->
+    <template v-if="logado">
+      <p>Usuario logado: {{ nome }}</p>
+      <p>Tipo de usuario: Admin</p>
+    </template>
+    <p v-else-if="anonimo">Navegando como anonimo</p>
+    <p v-else>Nenhum usuario logado</p>
+    <button @click="logado = !logado">{{ logado ? 'Sair' : 'Entrar' }}</button>
+    <input type="checkbox" v-model="anonimo">
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        nome: 'Fernando',
+        logado: false,
+        anonimo: false
+      }
+    })
+  </script>
+</body>
+</html>
