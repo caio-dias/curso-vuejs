@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <button @click="titulo += '!!!!!!'">alterar titulo</button>
+        <button @click="$destroy()">destruir aplicacao</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                titulo: 'aula ciclo de vida'
+            },
+            //metodos do vue usados na criacao da aplicacao
+            beforeCreate() {
+                console.log('antes de criar a aplicacao')
+            },
+            created() {
+                console.log('aplicacao criada')
+            },
+            beforeMount() {
+                console.log('antes de montar (dom)')
+            },
+            mounted() {
+                console.log('dom montada')
+            },
+            //metodos acima sao chamados só uma vez, os de update sao chamados
+            //sempre que há alguma alteraco que a dom virtual filtre e de ok
+            beforeUpdate(){
+                console.log('antes de atualizar a aplicacao')
+            },
+            updated() {
+                console.log('aplicacao atualizada')
+            },
+            beforeDestroy() {
+                console.log('antes de destruir a aplicacao')
+            },
+            destroyed() {
+                //ao destruir a aplicacao, ele limpa tudo o que é vue
+                console.log('aplicacao destruida')
+            }
+        })
+    </script>
+</body>
+</html>

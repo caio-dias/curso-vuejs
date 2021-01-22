@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>multi instancia vue</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app1">
+        {{ titulo1 }}
+        <button @click="alterar">alterar</button>
+    </div>
+
+    <div id="app2">
+        {{ titulo2 }}
+        <button @click="alterar">alterar</button>
+    </div>
+
+    <script>
+        //é possivel ter mais de uma aplicação no vue, funciona, mas nao é comum ter, o normal é componentizar tudo.
+        new Vue({
+            el: "#app1",
+            data: {
+                titulo1: 'TESTE 1'
+            },
+            methods: {
+                alterar() {
+                    this.titulo1 += '!!!!!!'
+                }
+            }
+        })
+
+        new Vue({
+            el: "#app2",
+            data: {
+                titulo2: 'TESTE 2'
+            },
+            methods: {
+                alterar() {
+                    this.titulo2 += '!!!!!!'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

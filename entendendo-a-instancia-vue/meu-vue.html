@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MEU VUE!</title>
+</head>
+<body>
+    <div id="app">
+        {{ nome }} {{ sobrenome }} {{ 5 + 5 }}
+    </div>
+    
+    <script>
+        //como funciona o vue
+        function MeuVue (params) {
+            this.$el = document.querySelector(params.el)
+            this.$data = params.data
+
+            for(let atr in this.$data) {
+                Object.defineProperty(this, atr, {
+                    get: () => {
+                        return this.$data[atr]
+                    },
+                    set: value => {
+                        this.$data[atr] = value
+                    }
+                })
+            }
+
+            //interpolar dados
+            const regex = /\{\{([\s\w+]*)\}\}/g
+            this.$el.innerHTML = this.$el.innerHTML.replace(regex, (match, $1) => {
+                const value = this[$1.trim()]
+                return value ? value : eval($1)
+            })
+        }
+
+        const vm = new MeuVue({
+            el: '#app',
+            data: {
+                nome: 'Edilson',
+                sobrenome: 'Jogador'
+            }
+        })
+    </script>
+</body>
+</html>

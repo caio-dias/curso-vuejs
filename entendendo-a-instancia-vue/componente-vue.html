@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- usando o componente -->
+        <comp></comp>
+        <comp></comp>
+    </div>
+
+    <script>
+        //registrando um componente globalmente no vue
+        Vue.component('comp', {
+            template:`
+                <div>
+                    <h1>{{ aula }}</h1>
+                    <h2>{{ modulo }}</h2>
+                    <button @click="alterarAula">alterar aula</button>
+                    <button @click="alterarModulo">alterar modulo</button>                
+                </div>`,
+            //usando uma funcao para o componente ter data individual
+            data: function() {
+                return {
+                    aula: 'aula usando refs',
+                    modulo: 'modulo: instancia vue'
+                }
+            },
+            methods: {
+                alterarAula() {
+                    this.aula += '!!!!!'
+                },
+                alterarModulo() {
+                    this.modulo += '!!!!!'
+                }
+            }
+        })
+
+        const vm = new Vue({
+            el: '#app',
+        })
+    </script>
+</body>
+</html>

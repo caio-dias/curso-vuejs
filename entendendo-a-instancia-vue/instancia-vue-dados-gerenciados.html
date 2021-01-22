@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>multi instancia vue</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+        {{ titulo }} {{ novaInfo }}
+        <button @click="alterar">alterar</button>
+    </div>
+
+    <script>
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                titulo: 'TESTE '
+            },
+            methods: {
+                alterar() {
+                    this.titulo += '!!!!!'
+                }
+            }
+        })
+
+        //essa nao é uma prop reativa, ele nao esta no inicio da aplicacao, logo ela nao é interpolada
+        vm.novaInfo = 'nova info' 
+        
+    </script>
+</body>
+</html>

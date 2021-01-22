@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>multi instancia vue</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app1">
+        {{ titulo1 }}
+        <button @click="alterar">alterar</button>
+    </div>
+
+    <div id="app2">
+        {{ titulo2 }}
+        <button @click="alterar">alterar</button>
+    </div>
+
+    <script>
+        //instanciando via var/const, conseguimos modificar uma instancia do vue, via outra instancia
+        const vm1 = new Vue({
+            el: "#app1",
+            data: {
+                titulo1: 'TESTE 1'
+            },
+            methods: {
+                alterar() {
+                    vm2.titulo2 += '?????'
+                }
+            }
+        })
+
+        const vm2 = new Vue({
+            el: "#app2",
+            data: {
+                titulo2: 'TESTE 2'
+            },
+            methods: {
+                alterar() {
+                    vm1.titulo1 += '!!!!!!'
+                }
+            }
+        })
+
+        //precisa ter cuidado ao alterar o vue externamente
+        setTimeout(()=> {
+            vm1.titulo1 = 'alterado pelo timer externo!!'
+        }, 2000)
+    </script>
+</body>
+</html>

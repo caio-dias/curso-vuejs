@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="app">
+    </div>
+    
+    <script>
+        const vm = new Vue({
+            //metodo de montar um template html direto na instancia vue
+            template:`
+                <div>
+                    <h1>{{ aula }}</h1>
+                    <h2>{{ modulo }}</h2>
+                    <button @click="alterarAula">alterar aula</button>
+                    <button @click="alterarModulo">alterar modulo</button>                
+                </div>
+            `,
+            data: {
+                aula: 'montando instancia vue',
+                modulo: 'modulo: instancia vue'
+            },
+            methods: {
+                alterarAula() {
+                    this.aula += '!!!!!'
+                },
+                alterarModulo() {
+                    this.modulo += '!!!!!'
+                }
+            }
+        })
+
+        //uma forma de montar uma instancia vue
+        vm.$mount('#app')
+    </script>
+</body>
+</html>
